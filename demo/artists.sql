@@ -31,7 +31,7 @@ VALUES
   (1, "Salvador", "Dali", 1),
   (2, "Pablo", "Picasso", 1),
   (3, "Claude", "Monet", 2),
-  (4, "Anthony", "Rondinone", NULL);
+  (4, "Anthony", "Rondinone", 2);
 
 INSERT INTO
   paintings (id, title, artist_id)
@@ -40,4 +40,4 @@ VALUES
   (2, "The Pond", 2),
   (3, "Little Girl", 3),
   (4, "The Wait", 3),
-  (5, "Stray Cat", NULL);
+  (5, "Stray Cat", 4);

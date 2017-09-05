@@ -1,5 +1,5 @@
-require_relative 'searchable'
 require 'active_support/inflector'
+require_relative 'db_connection'
 
 
 class AssocOptions
@@ -80,15 +80,6 @@ module Associatable
     @assoc_options ||= {}
     @assoc_options
   end
-end
-
-class SQLObject
-  extend Associatable
-end
-
-
-module Associatable
-
 
   def has_one_through(name, through_name, source_name)
     define_method(name) do
@@ -104,7 +95,7 @@ module Associatable
       source_table = source_options.table_name
 
       foreign_key_val = self.send(through_foreign_key)
-      results = DBConnection.execute(<<-SQL, foreign_key_val)
+      results = RubyRM::DBConnection.execute(<<-SQL, foreign_key_val)
         SELECT
           #{source_table}.*
         FROM
